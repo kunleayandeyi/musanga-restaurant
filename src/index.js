@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import menuData from "./data";
+console.log(menuData);
 const App = function () {
   return (
     <div className="container">
@@ -21,48 +23,31 @@ const Menu = function () {
     <main className="menu">
       <h2> Our Menu speaks</h2>
       <div className="foods">
-        <Food
-          recipe="This menu consist of sweet corn and freshly plucked cucumber and a big
-        green pepper to garnish"
-          foodName="Corn chorizo"
-          foodImage="./menu/corn.jpg"
-        />
-        <Food
-          recipe="This menu consist of rice and  fresh vegetables"
-          foodName="smokky fried rice"
-          foodImage="./menu/fried_rice.jpg"
-        />
-        <Food
-          recipe="This menu consist of rice and fresh prawns and fried chicken garnished with goat meat"
-          foodName="Nigerian party Jollof Rice "
-          foodImage="./menu/jollof_rice.jpg"
-        />
-        <Food
-          recipe="This menu consist of freshly baked margherita pizza garnished with mushroom and meaty beef"
-          foodName="Margherita pizza"
-          foodImage="./menu/margherita.jpg"
-        />
-        <Food
-          recipe="This menu consist of roasted plantain garnished with chili pepper"
-          foodName="Roasted plantain"
-          foodImage="./menu/plantain.jpg"
-        />
-        <Food
-          recipe="This menu consist of white  rice and chicken"
-          foodName="rice and chicken curry"
-          foodImage="./menu/rice.jpg"
-        />
+        {menuData.map(({photoName,ingredients,foodName}) => (
+          <Food photoName={photoName} ingredients={ingredients} foodName={foodName} />
+        ))}
       </div>
     </main>
   );
 };
-const Food = function ({ recipe, foodName, foodImage }) {
+const Food = function ({photoName,ingredients,foodName}) {
   return (
     <div className="food">
-      <img src={foodImage} alt={foodName} />
+      <img src={photoName} alt={foodName} />
       <div>
         <h3>{foodName}</h3>
-        <p>{recipe}</p>
+        <p>{ingredients}</p>
+      </div>
+    </div>
+  );
+};
+const Foodyy = function () {
+  return (
+    <div className="food">
+      <img src="menu/corn.jpg" alt="corn" />
+      <div>
+        <h3>corn</h3>
+        <p>recipe</p>
       </div>
     </div>
   );
